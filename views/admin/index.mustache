@@ -3,27 +3,35 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" type="text/css" href="../../site.css">
+        <link rel="stylesheet" type="text/css" href="../../styles.css">
     </head>
-    <body>
-        <p><h3 id="welcomeHeader">Welcome!&nbsp <span id="userName">{{username}}</span></h3>
-        <form action='/logout' method ='post'>
-            <input type="submit" name = 'btnLogout' id = "btnLogout"value ="Logout">
-        </form></p>
-        <div class="container">
-        <h3>Enter your New Trip</h3>
-        <form action="/admin/trips" method="post">
-
-            <label>Trip Title:<input type="text" name="tripName"/></label><br/></br>
-            <label>Image url:<input type="text" name="tripImageUrl"/></label><br/></br>
-            <label>Departure Date:<input type="text" name="dateDepature"/></label><br/></br>
-            <label>Return Date:<input type="text" name="dateReturn"/></label><br/></br>
-            <input type="submit" name="btnAdd" value="Add"/>
-    
+    <body id="colorBody">
+        <div>
+        <form action='/chat' method ='post'>
+            <input type="submit" name = 'btnChat' id = "btnHome"value ="Chat">
         </form>
+        <form action='/logout' method ='post'>
+            <input type="submit" name = 'btnLogout' id = "btnHome"value ="Logout">
+        </form>
+        </div>
+        <div class="wrapper">
+            <h3 id="welcomeHeader">Welcome!&nbsp <span id="userName">{{username}}</span></h3>
+
+            <p id="tripTitle">Enter your New Trip</p>
+            <form action="/admin/trips" method="post">
+
+                <label>Trip Title:<input type="text" name="tripName"/></label><br/></br/>
+                <label>Image url:<input type="text" name="tripImageUrl"/></label><br/></br/>
+                <label>Departure Date:<input type="text" name="dateDepature"/></label><br/></br/>
+                <label>Return Date:<input type="text" name="dateReturn"/></label><br/></br/>
+                <input type="submit" name="btnAdd" id="btnSubmit"value="Add Your Trip"/>
+    
+            </form>
         
        
-    </div>
+        </div>
+        <div>
         
+        </div>
     </body>
 </html>

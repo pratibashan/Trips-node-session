@@ -1,0 +1,117 @@
+
+
+#colorBody{
+    background: #360033; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #360033, #0b8793); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #360033, #0b8793); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#nocolorBody{
+    background-color:white;
+}
+.wrapper{
+    margin: auto;
+    width: 50%;
+    border: 3px solid gray;
+    padding: 10px;
+    background-color: #a9a9a942;
+}
+h3 {
+    font-size: 30px;
+    
+   
+}
+img {
+    width:300px;
+    height: 300px;
+    
+}
+
+#tripsDiv{
+    width:500px;
+    height: 600px;
+}
+/* #tripName{
+    position: absolute;
+    left:24rem;
+     bottom:22rem; 
+}
+#tripDate{
+    position: absolute;
+    left:24rem;
+    bottom:25rem;
+} */
+.wrapper{
+    color:white;
+}
+#tripName #tripDate {
+    font-weight: bold;
+}
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+#btnSubmit{
+   
+        background-color: #008CBA;
+        border: none;
+        color:white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-size: 15px;
+}
+h3 {
+
+    text-align: center;
+}
+
+#btnLink {
+    float: right;
+    margin: 15px;
+    background:none;
+     color:#000880;
+     border:none; 
+     padding:0;
+     font-size: 20px;
+     /* font-weight: bold; */
+     border-bottom:1px solid #444; 
+     cursor: pointer;
+}
+
+#btnHome{
+    float: right;
+    margin: 15px;
+    background:none;
+     color:white;
+     border:none; 
+     padding:0;
+     font-size: 20px;
+     /* font-weight: bold; */
+     border-bottom:1px solid #444; 
+     cursor: pointer;
+}
+#welcomeHeader{
+    /* float: left; */
+    color:white;
+    font-size: 25px;
+} 
+
+#userName{
+    text-transform: capitalize;
+}
+#chatDiv {
+    
+    margin:20px;
+}
+#chatwrap {
+    border: 1px solid black;
+}
+#tripTitle{
+    text-align: center;
+    
+}

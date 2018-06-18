@@ -1,0 +1,27 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href ="styles.css">
+    </head>
+    <body id="nocolorBody">
+        
+        <div id="chatwrap">
+            <div id="usersDiv"></div>
+            <div id="chatDiv" style= "height:200px">
+
+        </div>
+        <div>
+            <form id="sendMessageForm">
+                <input type="text"  id="textMessage"/>
+                <input type="submit" id="btnSubmit"/>
+            </form>
+        </div>
+        </div>
+            
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/chatClient.js"></script>
+
+</html>

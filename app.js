@@ -1,12 +1,20 @@
 
-const express = require('express')
 const mustacheExpress = require('mustache-express')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 
-const app = express()
+var express = require('express')
+var app = express()
+
+var http = require('http').Server(app);
+
+// io is socket.io instance
+var io = require('socket.io')(http)
+
 
 let currentUser = {} 
+let userArray = []
+let connections = []
 
 //init session
 app.use(session({
@@ -15,8 +23,6 @@ app.use(session({
     saveUninitialized: false
   }))
 
-let tripsArray = []
-let userArray = []
 
 app.engine('mustache',mustacheExpress())
 app.set('views','./views')
@@ -27,12 +33,22 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 
-
 app.get('/register',function(req,res){
     res.render('register')
 })
 
+app.get('/',function(req,res){
 
+    res.render('home')
+
+})
+app.post('/homeregister',function(req,res){
+    res.render('register')
+})
+
+app.post('/homelogin',function(req,res){
+    res.render('login')
+})
 app.post('/register',function(req,res){
 
 
@@ -90,7 +106,7 @@ function validateLogin(req,res,next) {
         if(req.session.username) {
           next()
         } else {
-          res.redirect('/login')
+          res.redirect('/')
         }
       
       }
@@ -162,6 +178,55 @@ function guid() {
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
       }
 
-app.listen(3000,function(){
+
+//user chat app
+let sessionUser = ""
+app.post('/chat',function(req,res){
+    sessionUser = req.session.username
+     res.sendFile(__dirname + '/chat.html')
+})
+ 
+io.sockets.on('connection',function(socket){
+
+    console.log('USER IS CONNECTED!!!')
+    connections.push(socket)
+    console.log("Connected: %s sockets connected",connections.length)
+    
+    
+        //Disconnect
+    socket.on('disconnect',function(){
+        connections.splice(connections.indexOf(socket),1)
+        console.log('Disconnected: %s sockets connected',connections.length)
+    
+    })
+    socket.username = sessionUser
+
+    socket.on('change_username',function(data){
+
+             socket.username = data.username
+        })  
+
+    socket.on('send message',function(data){
+        
+        io.sockets.emit('new message',{msg:data,username:socket.username,usersConnected:connections.length})
+
+    })
+
+    // socket.on('typing',function(data){
+    //     socket.broadcast.emit('typing',)
+    // })
+
+    
+    
+    })
+    
+    
+    
+
+//app.listen(3000,function(){
+ //   console.log('app listening on port 3000')
+//})
+
+http.listen(3000,function(){
     console.log('app listening on port 3000')
 })
